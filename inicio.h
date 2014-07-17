@@ -27,6 +27,12 @@ private slots:
 
     void on_btnmodpartner_clicked();
 
+    void on_pushButton_5_clicked();
+
+    void on_btnsearchpartner_clicked();
+
+    void on_btnviewboss_clicked();
+
 private:
     Ui::Inicio *ui;
     QList<Socio *> partners_;

@@ -53,9 +53,16 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_5">
+             <widget class="QPushButton" name="btnsearchpartner">
               <property name="text">
                <string>Buscar ...</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnviewboss">
+              <property name="text">
+               <string>Ver jefes dpto.</string>
               </property>
              </widget>
             </item>
@@ -78,17 +85,22 @@
             </property>
             <column>
              <property name="text">
-              <string>Ocupación</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Aka</string>
+              <string>NºSoc.</string>
              </property>
             </column>
             <column>
              <property name="text">
               <string>Nombre</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Ocupación</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Contacto</string>
              </property>
             </column>
            </widget>

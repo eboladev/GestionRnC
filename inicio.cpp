@@ -26,8 +26,8 @@ void Inicio::on_btnaddpartner_clicked()
 void Inicio::addingpartner(Socio *nuevo_socio){
     partners_.append(nuevo_socio);
     npartners_++;
-//    info.append();
-  //  info.append(nuevo_socio->getName());
+    //info.append();
+    //info.append(nuevo_socio->getName());
     //info.append(nuevo_socio->getWork());
     //ui->partnerview->addItems(info);
     ui->partnerview->setRowCount(npartners_+1);
@@ -73,4 +73,14 @@ void Inicio::on_btnmodpartner_clicked()
     Dialog_newpartner * new_partner=new Dialog_newpartner (this);
     connect(new_partner, SIGNAL(new_partner(Socio*)), this, SLOT(addingpartner(Socio*)));
     new_partner->exec();
+}
+
+void Inicio::on_btnsearchpartner_clicked()
+{
+
+}
+
+void Inicio::on_btnviewboss_clicked()
+{
+
 }
