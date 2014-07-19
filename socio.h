@@ -41,6 +41,7 @@ private:
     QString phone_;     //número de telefono movil
     QString mail_;      //correo electrónico
     QString address_;   //dirección de residencia
+    QString password_;  //contraseña de acceso al sistema
 };
 
 #endif // SOCIO_H

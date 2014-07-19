@@ -5,6 +5,7 @@
 #include "socio.h"
 #include "evento.h"
 #include "deuda.h"
+#include "QFile"
 #include "dialog_newpartner.h"
 
 namespace Ui {
@@ -21,13 +22,12 @@ public:
 
 private slots:
     void on_btnaddpartner_clicked();
+
     void addingpartner(Socio *);
 
     void on_btndelpartner_clicked();
 
     void on_btnmodpartner_clicked();
-
-    void on_pushButton_5_clicked();
 
     void on_btnsearchpartner_clicked();
 
@@ -38,6 +38,7 @@ private:
     QList<Socio *> partners_;
     quint32 npartners_;
     Evento *events_;
+    QFile *partners_file_;
     Deuda *debts_;
 };
 
