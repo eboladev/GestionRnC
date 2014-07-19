@@ -18,8 +18,6 @@ public:
     //setters y getters
     void setName(QString);
     QString getName();
-    void setAge(quint32);
-    quint32 getAge();
     void setAKA(QString);
     QString getAKA();
     void setDNI(QString);
@@ -28,13 +26,21 @@ public:
     QString getWork();
     void setDebt();
     Deuda* getAllDebts();
+    void setIDpartner(short int);
+    quint32 getIDpartner();
+    void setDepartment(QString);
+    QString getDepartment();
+    void setPhone(QString);
+    QString getPhone();
+    void setGroup(QString);
+    QString getGroup();
 
 private:
+    quint32 idpartner_;//identificador que irá en orden ascendente para los partners
+    QString department_;//indica al departamento al que pertenece
     QString name_;      //nombre
     QString aka_;       //aka (apodo)
-    quint32 age_;       //edad
     QString dni_;       //DNI
-    QDate time_income;  //Tiempo de llegada
     Deuda *debts_;      //Deudas
     QString work_;      //Desempeño en la asoc.
     QString group_;     //Grupo (en otro caso → '-')

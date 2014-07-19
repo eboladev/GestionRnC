@@ -3,67 +3,39 @@
 
 Inicio::Inicio(QWidget *parent) :
     QMainWindow(parent),
-    partners_file_(NULL),
     ui(new Ui::Inicio){
     ui->setupUi(this);
     npartners_ = -1;
 
-    /*//buscamos los partners en el sistema para añadirlos
+    //buscamos los partners en el sistema para añadirlos
     partners_file_ = new QFile ("partners.ptr",this);
-    if(partners_file_->open(1,QIODevice::Text|QIODevice::ReadOnly)){
-        if(partners_file_->isReadable()){
-            //se crea el socio y se ponen los datos correspondientes
-            while(partners_file_->atEnd()){
-                Socio newp;
-                //se lee la línea
-                QString atribute;
-                char *c;
-                while (true){///leemos el NAME del socio
-                    partners_file_->getChar(c);
-                    if (*c != ':')
-                        atribute.append(c);
-                    else
-                        break;
-                }
-                newp.setName(atribute);
-
-                atribute.clear();
-                while (true){///leemos el AKA del socio
-                    partners_file_->getChar(c);
-                    if (*c != ':')
-                        atribute.append(c);
-                    else
-                        break;
-                }
-                newp.setAKA(atribute);
-
-                atribute.clear();
-                while (true){///leemos el DNI del socio
-                    partners_file_->getChar(c);
-                    if (*c != ':')
-                        atribute.append(c);
-                    else
-                        break;
-                }
-                newp.setDNI(atribute);
-
-                atribute.clear();
-                while (true){///leemos el WORK del socio
-                    partners_file_->getChar(c);
-                    if (*c != ':')
-                        atribute.append(c);
-                    else
-                        break;
-                }
-                newp.setWork(atribute);
-            }
+    if(partners_file_->open(QIODevice::ReadOnly)){
+        //se crea el socio y se ponen los datos correspondientes
+        while(!partners_file_->atEnd()){
+            Socio *newp = new Socio;
+            //se lee la línea
+            QString line;
+            QString atribute;
+            line =partners_file_->readLine();
+            ///segun formato extraemos los diferentes campos del partner
+            atribute = line.section(":",0,0);//NAME
+            newp->setName(atribute);
+            atribute = line.section(":",1,1);//AKA
+            newp->setAKA(atribute);
+            atribute = line.section(":",2,2);//DNI
+            newp->setDNI(atribute);
+            atribute = line.section(":",3,3);//WORK
+            newp->setWork(atribute);
+            atribute = line.section(":",4,4);//CONTACT
+            newp->setPhone(atribute);
+            atribute = line.section(":",5,5);//DEPARTMENT
+            newp->setDepartment(atribute);
+            atribute = line.section(":",6,6);//GROUP
+            newp->setGroup(atribute);
+            addingpartner(newp);
         }
     }
-    else{///error abriendo fichero
-        QMessageBox::warning(this,"Error", "Se ha producido un error al abrir el fichero de socios\n"
-                             +partners_file_->errorString()
-                             +"\n*Pruebe a borrarlo y crear otro, aveces funciona",QMessageBox::Ok);
-    }*/
+    partners_file_->close();
 }
 
 Inicio::~Inicio(){
@@ -84,55 +56,42 @@ void Inicio::on_btnaddpartner_clicked()
 void Inicio::addingpartner(Socio *nuevo_socio){
     partners_.append(nuevo_socio);
     npartners_++;
-    //info.append();
-    //info.append(nuevo_socio->getName());
-    //info.append(nuevo_socio->getWork());
-    //ui->partnerview->addItems(info);
-    ui->partnerview->setRowCount(npartners_+1);
-    QTableWidgetItem * item = new QTableWidgetItem(nuevo_socio->getWork());
-    if(item->text() == "AUX")
-        item->setBackgroundColor(QColor(255,175,0));//ponemos de color naranja los AUX
-    else if(item->text() == "WBR")
-        item->setBackgroundColor(QColor(128,255,0));//ponemos de color  los WBR
-    else if(item->text() == "MIXER")
-        item->setBackgroundColor(QColor(0,179,255));//ponemos de color  los MIXER
-    QTableWidgetItem * item_ = new QTableWidgetItem(nuevo_socio->getName());
-    QTableWidgetItem * item__ = new QTableWidgetItem(nuevo_socio->getAKA());
+    partners_.last()->setIDpartner(npartners_);
 
-    ui->partnerview->setItem(npartners_, 0, item);
-    ui->partnerview->setItem(npartners_, 2, item_);
-    ui->partnerview->setItem(npartners_, 1, item__);
+    ui->partnerview->setRowCount(npartners_+1);
+    //QTableWidgetItem * item = new QTableWidgetItem(npartners_);
+    QTableWidgetItem * item_ = new QTableWidgetItem(nuevo_socio->getWork());
+    QTableWidgetItem * item__ = new QTableWidgetItem(nuevo_socio->getName());
+    QTableWidgetItem * item___= new QTableWidgetItem(nuevo_socio->getPhone());
+
+    //ui->partnerview->setItem(npartners_, 0, item);
+    ui->partnerview->setItem(npartners_, 0, item__);
+    ui->partnerview->setItem(npartners_, 1, item___);
+    ui->partnerview->setItem(npartners_, 3, item_);
 
     //Una vez creado en el programa, lo guardamos al fichero de socios "partner.ptr"
     QString filein;
-    if(partners_file_)
-        delete partners_file_;
-    partners_file_ = new QFile("partners.ptr",this);
-    if(partners_file_->open(QIODevice::WriteOnly)){
-        filein = nuevo_socio->getName()+':'
+    if(partners_file_->open(QIODevice::ReadWrite)){
+        partners_file_->readAll();
+        if(npartners_>=1)
+            filein += '\n';
+        filein += nuevo_socio->getName()+':'
                 +nuevo_socio->getAKA()+':'
                 +nuevo_socio->getDNI()+':'
                 +nuevo_socio->getWork();
         QByteArray bytestowrite= filein.toUtf8();
         int bytes = partners_file_->write(bytestowrite);
-        if (bytes <= 0){
-            QMessageBox::warning(this,"Error", "Se ha producido un error al abrir el fichero de socios\n"
-                                 +partners_file_->errorString()
-                                 +"\n*El nuevo socio no se ha guardado",QMessageBox::Ok);
-        }
         partners_file_->close();
-    }
-    else{
-        QMessageBox::warning(this,"Error", "Se ha producido un error al abrir el fichero de socios\n"
-                             +partners_file_->errorString()
-                             +"\n*El nuevo socio no se ha guardado",QMessageBox::Ok);
     }
 }
 
 void Inicio::on_btndelpartner_clicked()
 {
     int row= ui->partnerview->currentRow();
+    QString DNItodel;
+    QString newtext;
     if(npartners_>=row && !partners_.isEmpty()){
+        DNItodel= partners_[row]->getDNI();
         if(QMessageBox::warning(this, "¿Está seguro?", "Está seguro que quiere elminar el siguiente socio:\n"
                                 +partners_[row]->getName(),QMessageBox::Ok,QMessageBox::Cancel) == QMessageBox::Ok){
             ui->partnerview->setItem(row, 0, NULL);
@@ -141,6 +100,16 @@ void Inicio::on_btndelpartner_clicked()
             ui->partnerview->removeRow(row);
             delete partners_[row];
             npartners_ --;
+            //ahora hay que quitarlo del fichero partners.ptr
+            partners_file_->open(QIODevice::ReadWrite);
+            while (!partners_file_->atEnd()){
+                QString line = partners_file_->readLine();
+                if(line.section(":",2,2).compare(DNItodel))
+                    newtext += line;
+            }
+            partners_file_->flush();
+            partners_file_->write(newtext.toUtf8());
+            partners_file_->close();
         }
     }
 }

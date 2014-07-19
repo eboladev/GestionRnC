@@ -5,8 +5,10 @@
 #include "socio.h"
 #include "evento.h"
 #include "deuda.h"
-#include "QFile"
+#include <QFile>
 #include "dialog_newpartner.h"
+#include <QTextStream>
+
 
 namespace Ui {
 class Inicio;

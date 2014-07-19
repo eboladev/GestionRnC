@@ -3,10 +3,6 @@
 Socio::Socio():
     debts_(NULL){
 }
-
-quint32 Socio::getAge(){
-    return age_;
-}
 QString Socio::getName(){
     return name_;
 }
@@ -23,10 +19,6 @@ Deuda * Socio::getAllDebts(){
     return debts_;
 }
 
-void Socio::setAge(quint32 age){
-    age_=age;
-}
-
 void Socio::setAKA(QString aka){
     aka_=aka;
 }
@@ -41,4 +33,40 @@ void Socio::setName(QString name){
 
 void Socio::setWork(QString work){
     work_=work;
+}
+
+void Socio::setIDpartner(short int id){
+    idpartner_ = id;
+}
+
+quint32 Socio::getIDpartner(){
+    return idpartner_;
+}
+
+void Socio::setDepartment(QString department){
+    department_ = department;
+}
+
+QString Socio::getDepartment(){
+    return department_;
+}
+
+
+void Socio::setPhone(QString phone){
+    if((phone.startsWith('6')
+            ||phone.startsWith('7'))
+            && (phone.size()==9))
+        phone_=phone;
+}
+
+QString Socio::getPhone(){
+    return phone_;
+}
+
+void Socio::setGroup(QString group){
+    group_ = group;
+}
+
+QString Socio::getGroup(){
+    return group_;
 }

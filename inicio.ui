@@ -85,22 +85,22 @@
             </property>
             <column>
              <property name="text">
-              <string>NºSoc.</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
               <string>Nombre</string>
              </property>
             </column>
             <column>
              <property name="text">
-              <string>Ocupación</string>
+              <string>Contacto</string>
              </property>
             </column>
             <column>
              <property name="text">
-              <string>Contacto</string>
+              <string>Departamento</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Ocupación</string>
              </property>
             </column>
            </widget>
