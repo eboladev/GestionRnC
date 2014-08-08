@@ -34,6 +34,10 @@ public:
     QString getPhone();
     void setGroup(QString);
     QString getGroup();
+    void setMail(QString);
+    QString getMail();
+    void setDepartmentBoss(int);
+    char getDepartmentBoss();
 
 private:
     quint32 idpartner_;//identificador que irá en orden ascendente para los partners
@@ -48,6 +52,7 @@ private:
     QString mail_;      //correo electrónico
     QString address_;   //dirección de residencia
     QString password_;  //contraseña de acceso al sistema
+    bool departmentboss_;//true si el socio es jefe del departamento al que pertenece
 };
 
 #endif // SOCIO_H

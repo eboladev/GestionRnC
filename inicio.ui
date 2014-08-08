@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Inicio</string>
+   <string>SGRnC - Inicio</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -24,7 +24,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="elideMode">
        <enum>Qt::ElideMiddle</enum>
@@ -67,11 +67,37 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btnmodpartner">
+             <spacer name="verticalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_8">
               <property name="text">
-               <string>Modificar ...</string>
+               <string>-Image-</string>
               </property>
              </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
             </item>
            </layout>
           </item>
@@ -152,6 +178,158 @@
        <attribute name="title">
         <string>Cuentas</string>
        </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_10">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_11">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <item>
+             <widget class="QLabel" name="label_3">
+              <property name="text">
+               <string>Resumen de cuentas</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_10">
+              <item>
+               <widget class="QLabel" name="label_9">
+                <property name="text">
+                 <string>Total:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="totaltext">
+                <property name="text">
+                 <string>-</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QTableWidget" name="tableWidget">
+              <column>
+               <property name="text">
+                <string>Cantidad</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Fecha</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Concepto</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_9">
+            <item>
+             <spacer name="verticalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_7">
+              <property name="text">
+               <string>-Image-</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_6">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_8">
+                <item>
+                 <widget class="QLabel" name="label_5">
+                  <property name="text">
+                   <string>Realizar una operacion:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="btnextract">
+                  <property name="text">
+                   <string>Extraer</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="btningress">
+                  <property name="text">
+                   <string>Ingresar</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_9">
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_7">
+                  <item>
+                   <widget class="QLabel" name="label_6">
+                    <property name="text">
+                     <string>Concepto</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_4">
+                    <property name="text">
+                     <string>Cantidad </string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_8">
+                  <item>
+                   <widget class="QLineEdit" name="concepttext"/>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="amounttext"/>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="tab">
        <attribute name="title">

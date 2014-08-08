@@ -7,14 +7,24 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>304</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>SGRnC - Añadir un socio</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
+   <item row="6" column="0">
+    <widget class="QCheckBox" name="checkdepartmentboss">
+     <property name="layoutDirection">
+      <enum>Qt::RightToLeft</enum>
+     </property>
+     <property name="text">
+      <string>Jefe de departamento</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -67,6 +77,13 @@
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Departamento</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
      <item>
@@ -92,11 +109,14 @@
        <item>
         <widget class="QLineEdit" name="grouptext"/>
        </item>
+       <item>
+        <widget class="QLineEdit" name="departmentext"/>
+       </item>
       </layout>
      </item>
     </layout>
    </item>
-   <item row="1" column="0">
+   <item row="7" column="0">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>

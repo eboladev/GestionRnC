@@ -53,10 +53,7 @@ QString Socio::getDepartment(){
 
 
 void Socio::setPhone(QString phone){
-    if((phone.startsWith('6')
-            ||phone.startsWith('7'))
-            && (phone.size()==9))
-        phone_=phone;
+    phone_=phone;
 }
 
 QString Socio::getPhone(){
@@ -69,4 +66,26 @@ void Socio::setGroup(QString group){
 
 QString Socio::getGroup(){
     return group_;
+}
+
+void Socio::setMail(QString mail){
+    mail_ = mail;
+}
+
+QString Socio::getMail(){
+    return mail_;
+}
+
+void Socio::setDepartmentBoss(int isboss){
+    if(isboss == 1)
+        departmentboss_= true;
+    else
+        departmentboss_ = false;
+}
+
+char Socio::getDepartmentBoss(){
+    if(departmentboss_==true)
+        return '1';
+    else
+        return '0';
 }

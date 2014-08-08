@@ -17,13 +17,21 @@ SOURCES += main.cpp\
     socio.cpp \
     deuda.cpp \
     evento.cpp \
-    dialog_newpartner.cpp
+    dialog_newpartner.cpp \
+    dialogdepartmentboss.cpp \
+    dialogsearchpartner.cpp \
+    cuenta.cpp
 
 HEADERS  += inicio.h \
     socio.h \
     deuda.h \
     evento.h \
-    dialog_newpartner.h
+    dialog_newpartner.h \
+    dialogdepartmentboss.h \
+    dialogsearchpartner.h \
+    cuenta.h
 
 FORMS    += inicio.ui \
-    dialog_newpartner.ui
+    dialog_newpartner.ui \
+    dialogdepartmentboss.ui \
+    dialogsearchpartner.ui
